@@ -13,7 +13,7 @@ g_partition_thickness = 1.2;
 // default = 13
 g_finger_partition_thickness = 1.2; 
 
-g_b_print_lid = false;
+g_b_print_lid = true;
 g_b_simple_lids = true;   
 
 NOZZEL_DIA = 0.4;
@@ -126,40 +126,38 @@ data = [
 
 //other dia 60
 
-     "dial stack",
+     "dials",
         [
             [ BOX_SIZE_XYZ, [spinnerBoxX, spinnerBoxY, spinnerBoxZ] ],
-            // [ BOX_LID,
-            //     [
-            //         [ LID_SOLID_B, t],
-            //     ]
-            // ],
+                    [BOX_STACKABLE_B, false],
+            [ BOX_LID,
+                [   
+                    [ LID_SOLID_B, t],
+                ]
+            ],
             [ BOX_COMPONENT, // aim dials
                 [
                     [ CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
                     [CMP_SHAPE, ROUND],
-                    [ POSITION_XY, [WALL,WALL]],  
-                    [CMP_COMPARTMENT_SIZE_XYZ,  [ spinnerDia, spinnerBoxY - walls(4), spinnerBoxZ] ],
+                    [ POSITION_XY, [0,0]],  
+                    [CMP_COMPARTMENT_SIZE_XYZ,  [ spinnerDia, spinnerBoxY - walls(2), spinnerBoxZ] ],
                     [CMP_CUTOUT_SIDES_4B, [t,t,f,f]],
-                    [CMP_CUTOUT_TYPE, EXTERIOR],
-                    [CMP_CUTOUT_DEPTH_PCT, 100],
+                    [CMP_CUTOUT_TYPE, BOTH],
+                    [CMP_CUTOUT_WIDTH_PCT,50], // how wide the finger hole is
                     [CMP_CUTOUT_HEIGHT_PCT,60 ], // how deep the finger-hole is from top
-
                 ]
             ],                            
             [ BOX_COMPONENT, // big dials
                 [
                     [ CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
                     [CMP_SHAPE, ROUND],
-                    [ POSITION_XY, [spinnerDia + walls(2),WALL]],  
+                    [ POSITION_XY, [MAX,MAX]],  
                     [CMP_SHAPE_ROTATED_B, true],
-                    [CMP_COMPARTMENT_SIZE_XYZ,  [ 12, bigDialDiameter, spinnerBoxZ] ],
-                    [CMP_CUTOUT_SIDES_4B, [f,f,t,f]],
-                    [CMP_CUTOUT_TYPE, EXTERIOR],
+                    [CMP_COMPARTMENT_SIZE_XYZ,  [ 18, bigDialDiameter, spinnerBoxZ] ],
+                    [CMP_CUTOUT_TYPE, BOTH],
                     [CMP_CUTOUT_BOTTOM_B, false],
-                     [CMP_CUTOUT_HEIGHT_PCT,60 ],
-                     [ CMP_CUTOUT_WIDTH_PCT, 50 ], // width of the hole
-                    // [CMP_CUTOUT_DEPTH_PCT, 50],
+                    [CMP_CUTOUT_HEIGHT_PCT,60 ], // how deep the finger-hole is from top
+                    [CMP_CUTOUT_SIDES_4B, [f,f,t,f]],
                     [CMP_PEDESTAL_BASE_B, false]
 
 
