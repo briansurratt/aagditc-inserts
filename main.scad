@@ -43,9 +43,9 @@ function discs(x) = (x * 2) + 2 ; // number disc
 bigDialDiameter = 60;
 spinnerDia = 45;
 spinnerBoxX = 67;
-spinnerBoxY = 68.6;
+spinnerBoxY = 68.5;
 // spinnerBoxZ = spinnerDia /2;
-spinnerBoxZ = bigDialDiameter;
+spinnerBoxZ = bigDialDiameter + 2;
 
 
 data = [
@@ -153,7 +153,7 @@ data = [
                     [CMP_SHAPE, ROUND],
                     [ POSITION_XY, [MAX,MAX]],  
                     [CMP_SHAPE_ROTATED_B, true],
-                    [CMP_COMPARTMENT_SIZE_XYZ,  [ 18, bigDialDiameter, spinnerBoxZ] ],
+                    [CMP_COMPARTMENT_SIZE_XYZ,  [ 18, , spinnerBoxY - walls(2), spinnerBoxZ] ],
                     [CMP_CUTOUT_TYPE, BOTH],
                     [CMP_CUTOUT_BOTTOM_B, false],
                     [CMP_CUTOUT_HEIGHT_PCT,60 ], // how deep the finger-hole is from top
