@@ -1,4 +1,5 @@
 include <boardgame_insert_toolkit_lib.2.scad>; 
+include <dialBox.scad>;
 
 // this is the outer wall thickness. 
 //Default = 1.5
@@ -12,6 +13,9 @@ g_partition_thickness = 1.2;
 // inserting fingers to grab the bits.
 // default = 13
 g_finger_partition_thickness = 1.2; 
+
+// Focus on one box
+g_isolated_print_box = "dials"; 
 
 g_b_print_lid = true;
 g_b_simple_lids = true;   
@@ -40,21 +44,17 @@ function discs(x) = (x * 2) + 2 ; // number disc
 
 
 
-bigDialDiameter = 60;
-spinnerDia = 45;
-spinnerBoxX = 67;
-spinnerBoxY = 68.5;
-// spinnerBoxZ = spinnerDia /2;
-spinnerBoxZ = bigDialDiameter + 2;
-
-
 data = [
-
 
 [   "square tokens",                          
     [
         [ BOX_SIZE_XYZ, [TOTAL_LENGTH, TOTAL_WIDTH, TOTAL_HEIGHT] ],      
-        [ ENABLED_B, false],
+        [ ENABLED_B, true],
+            [ BOX_LID,
+                [   
+                    [ LID_SOLID_B, t],
+                ]
+            ],
         [ BOX_COMPONENT,   // crates
             [
                 [ CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
@@ -62,8 +62,8 @@ data = [
                 [ POSITION_XY, [0,0]],        
                 [ CMP_COMPARTMENT_SIZE_XYZ, [ CRATES_STACK, SQUARE_TILE_DIM, SQUARE_TILE_DIM] ],   
                 [ CMP_CUTOUT_HEIGHT_PCT, 50 ],
-                [ CMP_CUTOUT_TYPE, EXTERIOR ], 
-                [CMP_CUTOUT_SIDES_4B, [false,false,false,true]]
+                [ CMP_CUTOUT_TYPE, BOTH ], 
+                [CMP_CUTOUT_SIDES_4B, [false,false,true,true]]
             ]
         ],
         [ BOX_COMPONENT,   // terminal
@@ -73,7 +73,7 @@ data = [
                 [ POSITION_XY, [walls(1) + 35,0]],        
                 [ CMP_COMPARTMENT_SIZE_XYZ, [ TERMINALS_STACK, SQUARE_TILE_DIM, SQUARE_TILE_DIM] ],   
                 [ CMP_CUTOUT_HEIGHT_PCT, 50 ],
-                [ CMP_CUTOUT_TYPE, EXTERIOR ], 
+                [ CMP_CUTOUT_TYPE, BOTH ], 
                 [CMP_CUTOUT_SIDES_4B, [false,false,true,true]]
             ]
         ],
@@ -106,8 +106,8 @@ data = [
                 [ POSITION_XY, [walls(4)  + 71,0]],        
                 [ CMP_COMPARTMENT_SIZE_XYZ, [ SPAWNS_STACK, SQUARE_TILE_DIM, SQUARE_TILE_DIM] ],   
                 [ CMP_CUTOUT_HEIGHT_PCT, 50 ],
-                [ CMP_CUTOUT_TYPE, INTERIOR ], 
-                [CMP_CUTOUT_SIDES_4B, [true,true,true,true]]
+                [ CMP_CUTOUT_TYPE, BOTH ], 
+                [CMP_CUTOUT_SIDES_4B, [false,false,true,true]]
             ]
         ]
         // [ BOX_COMPONENT,   // facehuggers
@@ -122,51 +122,7 @@ data = [
 
     ]
 ],
-[
-
-//other dia 60
-
-     "dials",
-        [
-            [ BOX_SIZE_XYZ, [spinnerBoxX, spinnerBoxY, spinnerBoxZ] ],
-                    [BOX_STACKABLE_B, false],
-            [ BOX_LID,
-                [   
-                    [ LID_SOLID_B, t],
-                ]
-            ],
-            [ BOX_COMPONENT, // aim dials
-                [
-                    [ CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
-                    [CMP_SHAPE, ROUND],
-                    [ POSITION_XY, [0,0]],  
-                    [CMP_COMPARTMENT_SIZE_XYZ,  [ spinnerDia, spinnerBoxY - walls(2), spinnerBoxZ] ],
-                    [CMP_CUTOUT_SIDES_4B, [t,t,f,f]],
-                    [CMP_CUTOUT_TYPE, BOTH],
-                    [CMP_CUTOUT_WIDTH_PCT,50], // how wide the finger hole is
-                    [CMP_CUTOUT_HEIGHT_PCT,60 ], // how deep the finger-hole is from top
-                ]
-            ],                            
-            [ BOX_COMPONENT, // big dials
-                [
-                    [ CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
-                    [CMP_SHAPE, ROUND],
-                    [ POSITION_XY, [MAX,MAX]],  
-                    [CMP_SHAPE_ROTATED_B, true],
-                    [CMP_COMPARTMENT_SIZE_XYZ,  [ 18, , spinnerBoxY - walls(2), spinnerBoxZ] ],
-                    [CMP_CUTOUT_TYPE, BOTH],
-                    [CMP_CUTOUT_BOTTOM_B, false],
-                    [CMP_CUTOUT_HEIGHT_PCT,60 ], // how deep the finger-hole is from top
-                    [CMP_CUTOUT_SIDES_4B, [f,f,t,f]],
-                    [CMP_PEDESTAL_BASE_B, false]
-
-
-                ]
-            ],                           
-        ]
-   
-
-]
+dialsBox
 
 
 
