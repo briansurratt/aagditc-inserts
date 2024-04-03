@@ -2,10 +2,10 @@
 
 
 SQUARE_TILE_DIM = 25;
-SQUARE_TILE_DIVIDER = 15;
+COMPARTMENT_Y = SQUARE_TILE_DIM + 2;
 
 TOKEN_BOX_X = PLAYER_CARD_BOX_X;
-TOKEN_BOX_Y = SQUARE_TILE_DIM + 3.5;
+TOKEN_BOX_Y = COMPARTMENT_Y + 4;
 TOKEN_BOX_Z = SQUARE_TILE_DIM + 2;
 
 DISC_DIA = 26;
@@ -30,7 +30,7 @@ squareTokenBox = [
     ],
     [ BOX_COMPONENT, // crates
         [
-            [CMP_COMPARTMENT_SIZE_XYZ,  [ CRATES_STACK, SQUARE_TILE_DIM, PLAYER_CARD_BOX_Z] ],
+            [CMP_COMPARTMENT_SIZE_XYZ,  [ CRATES_STACK, COMPARTMENT_Y, PLAYER_CARD_BOX_Z] ],
             [CMP_CUTOUT_SIDES_4B, [f,f,f,t]],
             [CMP_CUTOUT_TYPE, EXTERIOR],
             [ CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
@@ -41,7 +41,7 @@ squareTokenBox = [
     ],    
     [ BOX_COMPONENT, // terminals
         [
-            [CMP_COMPARTMENT_SIZE_XYZ,  [ TERMINALS_STACK, SQUARE_TILE_DIM, PLAYER_CARD_BOX_Z] ],
+            [CMP_COMPARTMENT_SIZE_XYZ,  [ TERMINALS_STACK, COMPARTMENT_Y, PLAYER_CARD_BOX_Z] ],
             [CMP_CUTOUT_SIDES_4B, [f,f,f,t]],
             [CMP_CUTOUT_TYPE, EXTERIOR],
             [ CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
@@ -52,7 +52,7 @@ squareTokenBox = [
     ],
     [ BOX_COMPONENT, // turrets
         [
-            [CMP_COMPARTMENT_SIZE_XYZ,  [ TURRENT_STACK, SQUARE_TILE_DIM, PLAYER_CARD_BOX_Z] ],
+            [CMP_COMPARTMENT_SIZE_XYZ,  [ TURRENT_STACK, COMPARTMENT_Y, PLAYER_CARD_BOX_Z] ],
             [CMP_CUTOUT_SIDES_4B, [f,f,f,t]],
             [CMP_CUTOUT_TYPE, EXTERIOR],
             [ CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
@@ -63,7 +63,7 @@ squareTokenBox = [
     ],
     [ BOX_COMPONENT, // tunnels
         [
-            [CMP_COMPARTMENT_SIZE_XYZ,  [ TUNNEL_STACK, SQUARE_TILE_DIM, PLAYER_CARD_BOX_Z] ],
+            [CMP_COMPARTMENT_SIZE_XYZ,  [ TUNNEL_STACK, COMPARTMENT_Y, PLAYER_CARD_BOX_Z] ],
             [ CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
             [ POSITION_XY, [59,0]], 
             [CMP_CUTOUT_SIDES_4B, [f,f,t,f]],
@@ -74,7 +74,7 @@ squareTokenBox = [
     ],
     [ BOX_COMPONENT, // spawns
         [
-            [CMP_COMPARTMENT_SIZE_XYZ,  [ SPAWNS_STACK, SQUARE_TILE_DIM, PLAYER_CARD_BOX_Z] ],
+            [CMP_COMPARTMENT_SIZE_XYZ,  [ SPAWNS_STACK, COMPARTMENT_Y, PLAYER_CARD_BOX_Z] ],
             [CMP_CUTOUT_SIDES_4B, [f,f,f,f]],
             [CMP_CUTOUT_TYPE, EXTERIOR],
             [ CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
@@ -85,7 +85,7 @@ squareTokenBox = [
     ],
        [ BOX_COMPONENT, // barricades * small discs
         [
-            [CMP_COMPARTMENT_SIZE_XYZ,  [ TOKEN_BOX_X - 94, SQUARE_TILE_DIM, PLAYER_CARD_BOX_Z] ],
+            [CMP_COMPARTMENT_SIZE_XYZ,  [ TOKEN_BOX_X - 94, COMPARTMENT_Y, PLAYER_CARD_BOX_Z] ],
             [ CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
             [CMP_SHAPE, FILLET],
             [ POSITION_XY, [90,0]], 
