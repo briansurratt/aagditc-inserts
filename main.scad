@@ -1,8 +1,11 @@
 include <boardgame_insert_toolkit_lib.2.scad>; 
 include <sharedConstants.scad>;
 include <dialBox.scad>;
-include <tokenBox.scad>;
+include <squareTokenBox.scad>;
+include <roundTokenBox.scad>;
 include <playerCardBox.scad>;
+include <cardBox.scad>;
+include <hobbitCardBox.scad>;
 
 // this is the outer wall thickness. 
 //Default = 1.5
@@ -15,10 +18,11 @@ g_partition_thickness = 1.2;
 // this is the width of partitions that are for 
 // inserting fingers to grab the bits.
 // default = 13
-g_finger_partition_thickness = 1.2; 
+g_finger_partition_thickness = 1.2;  // I don't see any impact to changing this
+
 
 // Focus on one box
-g_isolated_print_box = "token box"; 
+g_isolated_print_box = "standard card box"; 
 
 g_b_print_lid = true;
 g_b_simple_lids = true;   
@@ -32,31 +36,18 @@ TOTAL_LENGTH = 80 + walls(4) + walls(2);
 TOTAL_WIDTH = SQUARE_TILE_DIM + walls(2);
 TOTAL_HEIGHT = SQUARE_TILE_DIM + WALL * 2;
 
-cells = [CRATES_STACK, TERMINALS_STACK, TURRENT_STACK, TUNNEL_STACK, SPAWNS_STACK];
-
 function walls(x) = x * g_wall_thickness;
-
+function discs(x) = (x * 2) + 1 ; // number disc
 
 
 
 data = [
-
-
-        // [ BOX_COMPONENT,   // facehuggers
-        //     [ 
-        //         [CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
-        //         [ CMP_SHAPE, ROUND], 
-        //         [ POSITION_XY, [26+walls(2), 26 + discs(2) + discs(9) + walls(2)]  ],  
-        //         [ CMP_COMPARTMENT_SIZE_XYZ, [ 26, discs(2),26] ],
-        //     ]
-
-        // ]
-
-    tokenBox,
+    squareTokenBox,
     dialsBox,
-    playerCardBox
-
-
+    playerCardBox,
+    roundTokenBox,
+    cardBox,
+    hobbitCardBox
 ];
 
 

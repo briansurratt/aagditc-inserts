@@ -2,7 +2,7 @@
 
 
 playerCardBox = [
-    "player card box",
+    "character card box",
     [
     [ BOX_SIZE_XYZ, [PLAYER_CARD_BOX_X, PLAYER_CARD_BOX_Y, PLAYER_CARD_BOX_Z] ],
     [ BOX_STACKABLE_B, false],

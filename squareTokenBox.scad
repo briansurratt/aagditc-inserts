@@ -1,14 +1,13 @@
 
-function discs(x) = (x * 2) + 1 ; // number disc
+
 
 SQUARE_TILE_DIM = 25;
 SQUARE_TILE_DIVIDER = 15;
 
 TOKEN_BOX_X = PLAYER_CARD_BOX_X;
-TOKEN_BOX_Y = PLAYER_CARD_BOX_Y;
+TOKEN_BOX_Y = SQUARE_TILE_DIM + 3.5;
 TOKEN_BOX_Z = SQUARE_TILE_DIM + 2;
 
-DISC_ROW_Y = SQUARE_TILE_DIM + 2;
 DISC_DIA = 26;
 
 CRATES_STACK = 35;      // 37
@@ -17,15 +16,10 @@ TURRENT_STACK = 5;      // 59
 TUNNEL_STACK = 18;      // 79
 SPAWNS_STACK = 9;       // 91
 
-BLIP_STACK = discs(42);  // 84 + 1 + 2 = 87
-MISSION_BLIP_X = BLIP_STACK + 2;
-MISSION_BLIP_STACK = discs(4); 
-EGG_X = MISSION_BLIP_X + MISSION_BLIP_STACK + 2;
-EGG_STACK = discs(9); 
-ACID_X = EGG_X + EGG_STACK + 2;
 
-tokenBox = [
-    "token box",
+
+squareTokenBox = [
+    "square token box",
     [
     [ BOX_SIZE_XYZ, [TOKEN_BOX_X, TOKEN_BOX_Y, TOKEN_BOX_Z] ],
     [ BOX_STACKABLE_B, false],
@@ -41,8 +35,8 @@ tokenBox = [
             [CMP_CUTOUT_TYPE, EXTERIOR],
             [ CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
             [ POSITION_XY, [0,0]], 
-            [CMP_CUTOUT_WIDTH_PCT,75], // how wide the finger hole is
-            [CMP_CUTOUT_HEIGHT_PCT,50], // how deep the finger-hole is from top
+            [CMP_CUTOUT_WIDTH_PCT,100], 
+            [CMP_CUTOUT_HEIGHT_PCT,25], 
         ]
     ],    
     [ BOX_COMPONENT, // terminals
@@ -52,8 +46,8 @@ tokenBox = [
             [CMP_CUTOUT_TYPE, EXTERIOR],
             [ CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
             [ POSITION_XY, [37,0]], 
-            [CMP_CUTOUT_WIDTH_PCT,75], // how wide the finger hole is
-            [CMP_CUTOUT_HEIGHT_PCT,50], // how deep the finger-hole is from top
+            [CMP_CUTOUT_WIDTH_PCT,100], 
+            [CMP_CUTOUT_HEIGHT_PCT,25], 
         ]
     ],
     [ BOX_COMPONENT, // turrets
@@ -63,73 +57,42 @@ tokenBox = [
             [CMP_CUTOUT_TYPE, EXTERIOR],
             [ CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
             [ POSITION_XY, [52,0]], 
-            [CMP_CUTOUT_WIDTH_PCT,75], // how wide the finger hole is
-            [CMP_CUTOUT_HEIGHT_PCT,50], // how deep the finger-hole is from top
+            [CMP_CUTOUT_WIDTH_PCT,100], 
+            [CMP_CUTOUT_HEIGHT_PCT,25], 
         ]
     ],
     [ BOX_COMPONENT, // tunnels
         [
             [CMP_COMPARTMENT_SIZE_XYZ,  [ TUNNEL_STACK, SQUARE_TILE_DIM, PLAYER_CARD_BOX_Z] ],
-            [CMP_CUTOUT_SIDES_4B, [f,f,f,t]],
-            [CMP_CUTOUT_TYPE, EXTERIOR],
             [ CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
             [ POSITION_XY, [59,0]], 
-            [CMP_CUTOUT_WIDTH_PCT,75], // how wide the finger hole is
-            [CMP_CUTOUT_HEIGHT_PCT,50], // how deep the finger-hole is from top
+            [CMP_CUTOUT_SIDES_4B, [f,f,t,f]],
+            [CMP_CUTOUT_TYPE, EXTERIOR],
+            [CMP_CUTOUT_WIDTH_PCT,100], 
+            [CMP_CUTOUT_HEIGHT_PCT,25], 
         ]
     ],
     [ BOX_COMPONENT, // spawns
         [
             [CMP_COMPARTMENT_SIZE_XYZ,  [ SPAWNS_STACK, SQUARE_TILE_DIM, PLAYER_CARD_BOX_Z] ],
-            [CMP_CUTOUT_SIDES_4B, [f,f,f,t]],
+            [CMP_CUTOUT_SIDES_4B, [f,f,f,f]],
             [CMP_CUTOUT_TYPE, EXTERIOR],
             [ CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
             [ POSITION_XY, [79,0]], 
-            [CMP_CUTOUT_WIDTH_PCT,75], // how wide the finger hole is
-            [CMP_CUTOUT_HEIGHT_PCT,50], // how deep the finger-hole is from top
+            [CMP_CUTOUT_WIDTH_PCT,100], 
+            [CMP_CUTOUT_HEIGHT_PCT,25], 
         ]
     ],
-    [
-        BOX_COMPONENT, // blips
+       [ BOX_COMPONENT, // barricades * small discs
         [
-            [CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
-            [ CMP_SHAPE, ROUND], 
-            [ POSITION_XY, [0,  DISC_ROW_Y ]],  
-            [CMP_SHAPE_ROTATED_B, true],
-            [ CMP_COMPARTMENT_SIZE_XYZ, [ BLIP_STACK, DISC_DIA, DISC_DIA] ]
+            [CMP_COMPARTMENT_SIZE_XYZ,  [ TOKEN_BOX_X - 94, SQUARE_TILE_DIM, PLAYER_CARD_BOX_Z] ],
+            [ CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
+            [CMP_SHAPE, FILLET],
+            [ POSITION_XY, [90,0]], 
         ]
     ],
-    [
-        BOX_COMPONENT, // mission blips
-        [
-            [CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
-            [ CMP_SHAPE, ROUND], 
-            [ POSITION_XY, [MISSION_BLIP_X,  DISC_ROW_Y ]],  
-            [CMP_SHAPE_ROTATED_B, true],
-            [ CMP_COMPARTMENT_SIZE_XYZ, [ MISSION_BLIP_STACK, DISC_DIA, DISC_DIA] ]
-        ]
-    ],
-    [
-        BOX_COMPONENT, // blips
-        [
-            [CMP_NUM_COMPARTMENTS_XY, [1, 1] ],
-            [ CMP_SHAPE, ROUND], 
-            [ POSITION_XY, [EGG_X,  DISC_ROW_Y ]],  
-            [CMP_SHAPE_ROTATED_B, true],
-            [ CMP_COMPARTMENT_SIZE_XYZ, [ EGG_STACK, DISC_DIA, DISC_DIA] ]
-        ]
-    ],
-    [ BOX_COMPONENT,   // acid, facehuggers
-        [ 
-            [CMP_NUM_COMPARTMENTS_XY, [1, 2] ],
-            [ CMP_SHAPE, ROUND], 
-            [ POSITION_XY, [ACID_X, 0]],  
-                [CMP_CUTOUT_SIDES_4B, [f,f,f,t]],
-            [ CMP_COMPARTMENT_SIZE_XYZ, [ discs(2), DISC_DIA, DISC_DIA] 
-            ]
-        ]
-
-    ],
+    
+    
     ]   
 ];
 

@@ -6,9 +6,7 @@ spinnerBoxZ = bigDialDiameter + 2;
 
 dialsBox = [
 
-//other dia 60
-
-     "dials",
+     "dial box",
         [
             [ BOX_SIZE_XYZ, [spinnerBoxX, spinnerBoxY, spinnerBoxZ] ],
             [BOX_STACKABLE_B, false],
