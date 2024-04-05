@@ -22,7 +22,7 @@ g_finger_partition_thickness = 1.2;  // I don't see any impact to changing this
 
 
 // Focus on one box
-g_isolated_print_box = "standard card box"; 
+g_isolated_print_box = "round token box"; 
 
 g_b_print_lid = true;
 g_b_simple_lids = true;   
