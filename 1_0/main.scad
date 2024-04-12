@@ -1,28 +1,16 @@
 include <boardgame_insert_toolkit_lib.2.scad>; 
 include <sharedConstants.scad>;
 include <dialBox.scad>;
-include <squareTokenBox.scad>;
-include <roundTokenBox.scad>;
-include <playerCardBox.scad>;
+// include <squareTokenBox.scad>;
+// include <roundTokenBox.scad>;
+include <characterCardBox.scad>;
 include <cardBox.scad>;
 include <hobbitCardBox.scad>;
 
-// this is the outer wall thickness. 
-//Default = 1.5
-g_wall_thickness = 1.6;
-
-// this is the thickness of partitions between compartments
-// Default = 1
-g_partition_thickness = 1.2;
-
-// this is the width of partitions that are for 
-// inserting fingers to grab the bits.
-// default = 13
-g_finger_partition_thickness = 1.2;  // I don't see any impact to changing this
 
 
 // Focus on one box
-g_isolated_print_box = "round token box"; 
+g_isolated_print_box = "character card box"; 
 
 g_b_print_lid = true;
 g_b_simple_lids = true;   
@@ -42,10 +30,10 @@ function discs(x) = (x * 2) + 1 ; // number disc
 
 
 data = [
-    squareTokenBox,
+    // squareTokenBox,
+    // roundTokenBox,
     dialsBox,
-    playerCardBox,
-    roundTokenBox,
+    characterCardBox,
     cardBox,
     hobbitCardBox
 ];
