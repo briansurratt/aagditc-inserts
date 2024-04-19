@@ -22,12 +22,17 @@ module boxFillets(x,y,s=7,h=MAX_Z, w=WALL_THICKNESS) {
 
 }
 
-module boxShell(xDim = 100, yDim = 50, zDim = 25) {
+module boxShell(xDim = 100, yDim = 50, zDim = 25, zLift = 0, fillets=false) {
     difference() {
-    cube([xDim, yDim, zDim]);
-    translate([WALL_THICKNESS, WALL_THICKNESS, WALL_THICKNESS])
-    cube([xDim- 2* WALL_THICKNESS, yDim - 2 * WALL_THICKNESS, zDim]);
-}
+        cube([xDim, yDim, zDim]);
+        translate([WALL_THICKNESS, WALL_THICKNESS, WALL_THICKNESS + zLift])
+        cube([xDim- 2* WALL_THICKNESS, yDim - 2 * WALL_THICKNESS, zDim]);
+        lidAccess(xDim,yDim, zDim);
+        boxDetents(xDim, yDim, zDim);
+    }
+    if (fillets) {
+        boxFillets(x=xDim, y=yDim, h=zDim);
+    }
 }
 
 module versionText(text= "0.0.0", x,y) {

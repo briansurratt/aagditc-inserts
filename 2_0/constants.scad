@@ -49,13 +49,22 @@ turret_count = 2;
 
 egg_z = 20;
 egg_base_d = 18.5;
+padded_egg_base_d = egg_base_d + 1;
 egg_count = 8;
 
 assets_box_x = BOX_X - large_character_box_x;
-assert_box_y = large_character_box_y;
+assets_box_y = large_character_box_y;
 
 facehugger_diameter = MINI_BASE_DIAMETER;
 faceHugger_z = MINI_BASE_THICKNESS + 24;
 
-asset_box_z_1 = faceHugger_z + 2 * WALL_THICKNESS;
-asset_box_z_2 = MAX_Z - asset_box_z_1 - 1;
+asset_box_z_1 = turret_z + 2 * WALL_THICKNESS;
+asset_box_z_2 =faceHugger_z + 2 * WALL_THICKNESS;
+
+termninal_side = 22.5;
+padded_termninal_side = termninal_side + 1;
+
+crate_size = 21;
+padded_crate_size = crate_size + 1;
+crate_z = 13.8;
+crate_count = 16;

@@ -12,11 +12,9 @@ include <assets-hazzards.scad>;
 // larageCharacterBox();
 // versionText("1.1.1", 25,50);
 // xenoTray();
-assetBox1();
-
-translate([0,assert_box_y + 10,0]) {
-    assetBox2();
-}
+//assetBox1();
+//assetBox2();
+assetBox3();
 
 
 
